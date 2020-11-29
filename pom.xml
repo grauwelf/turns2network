@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.geosimlab.jerusalem</groupId>
+  <artifactId>turns2network</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>Turns2Network-JLM</name>
+ 
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.opencsv</groupId>
+      <artifactId>opencsv</artifactId>
+      <version>4.6</version>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.17</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>Turns2Network</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+	    <artifactId>maven-compiler-plugin</artifactId>
+	    <version>3.8.1</version>
+        <configuration>
+	      <release>11</release>
+	      <target>11</target>
+          <source>11</source>
+        </configuration>
+      </plugin>	  
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+	    <artifactId>maven-jar-plugin</artifactId>
+	    <version>3.2.0</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+	          <mainClass>org.geosimlab.jerusalem.Turns2Network</mainClass>
+            </manifest>
+          </archive>
+          <outputDirectory>.</outputDirectory>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+	    <artifactId>maven-assembly-plugin</artifactId>
+	    <executions>
+	      <execution>
+	        <phase>package</phase>
+	        <goals>
+	          <goal>single</goal>
+	        </goals>
+	        <configuration>
+	          <archive>
+	            <manifest>
+	              <mainClass>org.geosimlab.jerusalem.Turns2Network</mainClass>
+	            </manifest>
+	          </archive>
+	          <descriptorRefs>
+	            <descriptorRef>jar-with-dependencies</descriptorRef>
+	          </descriptorRefs>
+              <outputDirectory>.</outputDirectory>
+	        </configuration>
+	      </execution>
+	    </executions>
+	  </plugin>
+    </plugins>
+  </build>
+</project>
